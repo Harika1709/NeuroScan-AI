@@ -2,7 +2,7 @@
 #  NeuroScan AI — Flask Backend
 #  Brain Tumor MRI Classification
 #  Run:  python app.py
-#  Open: http://127.0.0.1:5000
+#  Open: http://127.0.0.1:5001
 # ══════════════════════════════════════════════════════════════
 
 import os
@@ -159,11 +159,19 @@ def health():
 
 
 # ── Run ───────────────────────────────────────────────────────
+import webbrowser
+from threading import Timer
+
 if __name__ == '__main__':
+
     print("\n" + "═" * 50)
     print("  🧠  NeuroScan AI — Brain Tumor Detection")
     print("═" * 50)
     print(f"  Model : {MODEL_PATH}")
     print(f"  URL   : http://127.0.0.1:5001")
     print("═" * 50 + "\n")
+
+    # Auto open browser
+    Timer(1, lambda: webbrowser.open('http://127.0.0.1:5001')).start()
+
     app.run(debug=True, host='0.0.0.0', port=5001)
